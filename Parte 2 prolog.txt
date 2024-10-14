@@ -1,0 +1,25 @@
+Parte 2 prolog
+A:
+lancado_depois(M, Y) :- movie(M, Y1), Y1 > Y.
+/* consultar lancado depois == lancado_depois(M, 2006).
+*/
+
+B:
+lancado_antes(M, Y) :- movie(M, Y1), Y1 < Y.
+/* consultar lancado antes == lancado_depois(M, 1995).
+*/
+
+C:
+mesmo_ano(M1, M2) :- movie(M1, Y), movie(M2, Y), M1 \= M2.
+/* consultar memso ano ==  mesmo_ano(in_good_company, a_love_song_for_bobby_long).
+ */
+
+D:
+coestrela(A1, A2) :- 
+    (actor(M, A1, _), actor(M, A2, _));
+    (actress(M, A1, _), actress(M, A2, _));
+    (actor(M, A1, _), actress(M, A2, _));
+    (actress(M, A1, _), actor(M, A2, _)).
+
+/* consultar costrela ==  coestrela(jeff_bridges, A2).
+ */
